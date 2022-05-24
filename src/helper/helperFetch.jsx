@@ -1,14 +1,12 @@
 const helperFetch = () => {
 	let MyFetch = async x => {
-		let res = await fetch(x);
-		let r = await res.json();
-		console.log(r);
+		let response = await fetch(x);
+		let jsonResponse = await response.json();
+		return { jsonResponse };
 	};
 	function GET(x) {
-		let fetchData = MyFetch(x);
-		console.log(fetchData);
+		return MyFetch(x);
 	}
 	return { GET };
 };
-helperFetch();
 export default helperFetch;
