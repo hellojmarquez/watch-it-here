@@ -1,13 +1,23 @@
-import React from 'react';
+import HeroBanner from './HeroBanner';
+import PopularContent from './PopularContent';
 
-const Home = ({ dat }) => {
-	const { media_type: media, original_name, original_title, overview } = dat;
+const Home = ({ movie, serie, data, img }) => {
 	return (
-		<div>
-			<h1>{original_name || original_title}</h1>
-			<h2>{media}</h2>
-			<p>{overview}</p>
-		</div>
+		<>
+			<HeroBanner data={data} img={img} />
+			<h2>Peliculas populares</h2>
+			{movie.length > 0 ? (
+				movie.map(el => <PopularContent key={el.id} data={el} img={img} />)
+			) : (
+				<p>Sin datos</p>
+			)}
+			<h2>Series populares</h2>
+			{movie.length > 0 ? (
+				serie.map(el => <PopularContent key={el.id} data={el} img={img} />)
+			) : (
+				<p>Sin datos</p>
+			)}
+		</>
 	);
 };
 

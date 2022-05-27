@@ -6,30 +6,44 @@ import Home from './components/Home';
 import { Routes, Route } from 'react-router-dom';
 import Movies from './components/Movies';
 import helperFetch from './helper/helperFetch';
-
 function App() {
-	const [db, setDb] = useState([]);
-	const URL =
+	const [data, setData] = useState({});
+	const urlTrending =
 		'https://api.themoviedb.org/3/trending/all/day?api_key=a5990ca05331451c8aa33c049c6d2ca3';
-
-	const datos = helperFetch();
+	const imgBaseUrl = 'http://image.tmdb.org/t/p/original';
+	let fetchData = helperFetch();
 	useEffect(() => {
-		datos.GET(URL).then(r => setDb(r.jsonResponse.results));
+		fetchData.GET(urlTrending).then(res => setData(res.jsonResponse.results));
 	}, []);
-	console.log(db);
-	//752623
+	let movie = [];
+	let serie = [];
+	if (data.length > 0) {
+		data.forEach(el => {
+			if (el.media_type === 'movie') {
+				movie.push(el);
+			} else if (el.media_type === 'tv') {
+				serie.push(el);
+			}
+		});
+	}
 	return (
 		<div className="App">
 			<Navbar />
 			<Routes>
 				<Route
 					path="/"
-					element={db.map(el => (
-						<Home key={el.id} dat={el} />
-					))}
+					element={
+						<Home movie={movie} serie={serie} data={data} img={imgBaseUrl} />
+					}
 				/>
-				<Route path="/series" element={<Series />} />
-				<Route path="/movies" element={<Movies />} />
+				<Route
+					path="/series"
+					element={<Series serie={serie} img={imgBaseUrl} />}
+				/>
+				<Route
+					path="/movies"
+					element={<Movies movie={movie} img={imgBaseUrl} />}
+				/>
 			</Routes>
 		</div>
 	);
