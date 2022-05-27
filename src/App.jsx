@@ -6,6 +6,7 @@ import Home from './components/Home';
 import { Routes, Route } from 'react-router-dom';
 import Movies from './components/Movies';
 import helperFetch from './helper/helperFetch';
+import Genders from './components/Genders';
 function App() {
 	const [data, setData] = useState({});
 	const urlTrending =
@@ -44,6 +45,7 @@ function App() {
 					path="/movies"
 					element={<Movies movie={movie} img={imgBaseUrl} />}
 				/>
+				<Route path="/generos/*" element={<Genders />} />
 			</Routes>
 		</div>
 	);
