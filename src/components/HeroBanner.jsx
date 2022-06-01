@@ -12,7 +12,6 @@ const HeroBanner = ({ img, data }) => {
 
 	return (
 		<div>
-			<div>{data.length > 0 && data[0].original_title}</div>
 			{data.length > 0 && (
 				<img
 					src={data.length > 0 && `${img}${data[counter].poster_path}`}

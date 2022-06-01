@@ -7,6 +7,7 @@ import { Routes, Route } from 'react-router-dom';
 import Movies from './components/Movies';
 import helperFetch from './helper/helperFetch';
 import Genders from './components/Genders';
+import Search from './components/Search';
 function App() {
 	const [data, setData] = useState({});
 	const urlTrending =
@@ -29,6 +30,7 @@ function App() {
 	}
 	return (
 		<div className="App">
+			<Search />
 			<Navbar />
 			<Routes>
 				<Route

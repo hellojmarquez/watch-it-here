@@ -1,5 +1,5 @@
 import HeroBanner from './HeroBanner';
-import PopularContent from './PopularContent';
+import PopularContent from './MediaContent';
 
 const Home = ({ movie, serie, data, img }) => {
 	return (

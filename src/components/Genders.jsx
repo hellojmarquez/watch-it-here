@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import helperFetch from '../helper/helperFetch';
 import GenresMovies from './GenresMovies';
 import GenresNavbar from './GenresNavbar';
@@ -21,7 +21,6 @@ const Genders = () => {
 			)
 			.then(res => setSeriesGenres(res.jsonResponse.genres));
 	}, []);
-	console.log(seriesGenres);
 
 	return (
 		<div>
