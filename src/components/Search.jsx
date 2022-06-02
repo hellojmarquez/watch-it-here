@@ -19,14 +19,12 @@ const Search = () => {
 	return (
 		<div>
 			<form action="">
-				<input
-					type="text"
-					name=""
-					placeholder="Buscar"
-					onChange={handleQuery}
-				/>
+				<input type="search" placeholder="Buscar" onChange={handleQuery} />
 				<input type="button" value="Buscar" onClick={handleSearch} />
 			</form>
+			<div>
+				<p>search</p>
+			</div>
 		</div>
 	);
 };

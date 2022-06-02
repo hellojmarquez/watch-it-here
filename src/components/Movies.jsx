@@ -25,15 +25,19 @@ const Movies = ({ movie, img }) => {
 			<div>
 				<HeroBanner data={movie} img={img} />
 				<h1>Peliculas populares</h1>
-				{movie.map(el => (
-					<MediaContent key={el.id} data={el} img={img} />
-				))}
+				<section className="container">
+					{movie.map(el => (
+						<MediaContent key={el.id} data={el} img={img} />
+					))}
+				</section>
 				<button onClick={handleWatchMore}>Ver más +</button>
-				{more.length > 0 ? (
-					more.map(el => <MediaContent key={el.id} data={el} img={img} />)
-				) : (
-					<p>sin datos</p>
-				)}
+				<section className="container">
+					{more.length > 0 ? (
+						more.map(el => <MediaContent key={el.id} data={el} img={img} />)
+					) : (
+						<p className="container_nodata">sin datos</p>
+					)}
+				</section>
 			</div>
 		);
 	} else {

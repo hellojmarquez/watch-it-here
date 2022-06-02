@@ -10,13 +10,13 @@ const MediaContent = ({ data, img }) => {
 	} = data;
 
 	return (
-		<div>
-			<h3>{name || title}</h3>
-			{/* <img src={img + poster} alt={name || title} /> */}
+		<div className="card">
+			<h3 className="card__title">{name || title}</h3>
+			<img className="card__img" src={img + poster} alt={name || title} />
 			{first_air_date ? (
-				<p>{'(' + first_air_date + ')'}</p>
+				<p className="card__date">{'(' + first_air_date + ')'}</p>
 			) : (
-				<p>{'(' + release_date + ')'}</p>
+				<p className="card__date">{'(' + release_date + ')'}</p>
 			)}
 		</div>
 	);

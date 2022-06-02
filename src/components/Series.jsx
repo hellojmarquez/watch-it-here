@@ -22,19 +22,23 @@ const Series = ({ serie, img }) => {
 	};
 	if (serie.length > 0) {
 		return (
-			<div>
+			<>
 				<HeroBanner data={serie} img={img} />
-				<h1>Peliculas populares</h1>
-				{serie.map(el => (
-					<MediaContent key={el.id} data={el} img={img} />
-				))}
-				<button onClick={handleWatchMore}>Ver más +</button>
-				{more.length > 0 ? (
-					more.map(el => <MediaContent key={el.id} data={el} img={img} />)
-				) : (
-					<p>sin datos</p>
-				)}
-			</div>
+				<h1>Series populares</h1>
+				<section className="container">
+					{serie.map(el => (
+						<MediaContent key={el.id} data={el} img={img} />
+					))}
+				</section>
+				<section className="container">
+					<button onClick={handleWatchMore}>Ver más +</button>
+					{more.length > 0 ? (
+						more.map(el => <MediaContent key={el.id} data={el} img={img} />)
+					) : (
+						<p className="container__nodata">sin datos</p>
+					)}
+				</section>
+			</>
 		);
 	} else {
 		return <p>sin datos</p>;

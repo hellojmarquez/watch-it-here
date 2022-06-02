@@ -11,14 +11,15 @@ const HeroBanner = ({ img, data }) => {
 	}, []);
 
 	return (
-		<div>
+		<main className="hero-banner">
 			{data.length > 0 && (
 				<img
-					src={data.length > 0 && `${img}${data[counter].poster_path}`}
+					className="hero-banner__img"
+					src={data.length > 0 && `${img}${data[1].poster_path}`}
 					alt={data.original_title || data.original_name}
 				/>
 			)}
-		</div>
+		</main>
 	);
 };
 

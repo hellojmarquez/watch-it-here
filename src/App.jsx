@@ -30,8 +30,10 @@ function App() {
 	}
 	return (
 		<div className="App">
-			<Search />
-			<Navbar />
+			<header className="header">
+				<Search />
+				<Navbar />
+			</header>
 			<Routes>
 				<Route
 					path="/"

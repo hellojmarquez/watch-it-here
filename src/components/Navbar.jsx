@@ -1,21 +1,49 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
 	return (
-		<nav>
-			<ul>
+		<nav className="header__menu">
+			<ul className="aa">
 				<li>
-					<Link to="/">Home</Link>
+					<NavLink
+						className={({ isActive }) => {
+							return isActive ? 'ac' : 'na';
+						}}
+						to="/"
+					>
+						Home
+					</NavLink>
 				</li>
 				<li>
-					<Link to="/series">Series</Link>
+					<NavLink
+						className={({ isActive }) => {
+							return isActive ? 'ac' : 'na';
+						}}
+						to="/series"
+					>
+						Series
+					</NavLink>
 				</li>
 				<li>
-					<Link to="/movies">Peliculas</Link>
+					<NavLink
+						className={({ isActive }) => {
+							return isActive ? 'ac' : 'na';
+						}}
+						to="/movies"
+					>
+						Peliculas
+					</NavLink>
 				</li>
 				<li>
-					<Link to="/generos">Generos</Link>
+					<NavLink
+						className={({ isActive }) => {
+							return isActive ? 'ac' : 'na';
+						}}
+						to="/generos"
+					>
+						Generos
+					</NavLink>
 				</li>
 			</ul>
 		</nav>
