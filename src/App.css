@@ -361,7 +361,7 @@ template {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: rgb(15, 31, 84);
+	background-color: #00415c;
 }
 
 .ac {
@@ -384,6 +384,19 @@ template {
 	text-align: center;
 }
 .card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	width: 90%;
-	background-color: blue;
+	background-color: #01202c;
+	margin-bottom: 1rem;
+}
+.card__img {
+	width: 100%;
+}
+.card__date {
+	margin-bottom: 0;
+}
+.card__media {
+	margin-top: 0;
 }

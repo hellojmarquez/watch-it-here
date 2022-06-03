@@ -8,14 +8,18 @@ import Movies from './components/Movies';
 import helperFetch from './helper/helperFetch';
 import Genders from './components/Genders';
 import Search from './components/Search';
+import VideoPage from './components/VideoPage';
 function App() {
 	const [data, setData] = useState({});
+	const [name, setname] = useState('');
+	const [mediat, setMediat] = useState('');
 	const urlTrending =
 		'https://api.themoviedb.org/3/trending/all/day?api_key=a5990ca05331451c8aa33c049c6d2ca3';
 	const imgBaseUrl = 'http://image.tmdb.org/t/p/original';
 	let fetchData = helperFetch();
 	useEffect(() => {
 		fetchData.GET(urlTrending).then(res => setData(res.jsonResponse.results));
+		return;
 	}, []);
 	let movie = [];
 	let serie = [];
@@ -36,9 +40,16 @@ function App() {
 			</header>
 			<Routes>
 				<Route
-					path="/"
+					path="/*"
 					element={
-						<Home movie={movie} serie={serie} data={data} img={imgBaseUrl} />
+						<Home
+							movie={movie}
+							serie={serie}
+							data={data}
+							img={imgBaseUrl}
+							setname={setname}
+							setMediat={setMediat}
+						/>
 					}
 				/>
 				<Route
@@ -50,6 +61,7 @@ function App() {
 					element={<Movies movie={movie} img={imgBaseUrl} />}
 				/>
 				<Route path="/generos/*" element={<Genders />} />
+				<Route path="vid" element={<VideoPage name={name} media={mediat} />} />
 			</Routes>
 		</div>
 	);
