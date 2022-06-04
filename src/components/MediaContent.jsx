@@ -1,8 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const MediaContent = ({ data, img, setMediat, setname }) => {
+const MediaContent = ({ data, img, setMediat, setId }) => {
 	const {
+		id,
 		original_name: name,
 		media_type: media,
 		title,
@@ -13,12 +14,11 @@ const MediaContent = ({ data, img, setMediat, setname }) => {
 	const navigate = useNavigate();
 	const handleClick = () => {
 		setMediat(media);
-		setname(name || title);
-		navigate('/vid', { replace: true });
+		setId(id);
+		navigate('/vid');
 	};
 	return (
 		<div className="card" onClick={handleClick}>
-			{/* <Link to={`/${name}`}> */}
 			<h3 className="card__title">{name || title}</h3>
 			<img className="card__img" src={img + poster} alt={name || title} />
 			{first_air_date ? (
