@@ -11,8 +11,6 @@ import Search from './components/Search';
 import VideoPage from './components/VideoPage';
 function App() {
 	const [data, setData] = useState({});
-	const [id, setId] = useState('');
-	const [mediat, setMediat] = useState('');
 	const urlTrending =
 		'https://api.themoviedb.org/3/trending/all/day?api_key=a5990ca05331451c8aa33c049c6d2ca3';
 	const imgBaseUrl = 'http://image.tmdb.org/t/p/original';
@@ -42,14 +40,7 @@ function App() {
 				<Route
 					path="/*"
 					element={
-						<Home
-							movie={movie}
-							serie={serie}
-							data={data}
-							img={imgBaseUrl}
-							setId={setId}
-							setMediat={setMediat}
-						/>
+						<Home movie={movie} serie={serie} data={data} img={imgBaseUrl} />
 					}
 				/>
 				<Route
@@ -61,7 +52,7 @@ function App() {
 					element={<Movies movie={movie} img={imgBaseUrl} />}
 				/>
 				<Route path="/generos/*" element={<Genders />} />
-				<Route path="vid" element={<VideoPage id={id} media={mediat} />} />
+				<Route path="/vid" element={<VideoPage imgBaseUrl={imgBaseUrl} />} />
 			</Routes>
 		</div>
 	);

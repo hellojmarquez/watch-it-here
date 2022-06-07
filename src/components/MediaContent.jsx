@@ -13,8 +13,11 @@ const MediaContent = ({ data, img, setMediat, setId }) => {
 	} = data;
 	const navigate = useNavigate();
 	const handleClick = () => {
-		setMediat(media);
-		setId(id);
+		const search = {
+			id: id,
+			media: media,
+		};
+		window.localStorage.setItem('search', JSON.stringify(search));
 		navigate('/vid');
 	};
 	return (

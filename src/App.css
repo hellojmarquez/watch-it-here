@@ -349,20 +349,19 @@ template {
 	display: none;
 }
 
-/**
- * Add the correct display in IE 10.
- */
-/* 
 [hidden] {
 	display: none;
-} */
-
+}
+body,
+html {
+	scroll-behavior: smooth;
+}
 .App {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	background-color: #00618a;
-	/* overflow: hidden; */
+	overflow: hidden;
 }
 
 .ac {
@@ -385,15 +384,18 @@ template {
 	text-align: center;
 }
 .card-container {
-	max-width: 100vw;
-	overflow: hidden;
-	display: flex;
+	position: relative;
+	overflow-y: hidden;
 	overflow-x: scroll;
+	max-width: 100vw;
+	display: flex;
 	scroll-behavior: smooth;
 	width: 100%;
 	height: 400px;
-	position: relative;
-	/* background-color: red; */
+	/* background-color: crimson; */
+}
+.card-container::-webkit-scrollbar {
+	display: hidden;
 }
 .card__title {
 	display: none;
@@ -401,8 +403,6 @@ template {
 .card {
 	display: flex;
 	flex-direction: column;
-	/* align-items: center; */
-	/* justify-content: space-between; */
 	min-width: 200px;
 	max-height: fit-content;
 	margin-right: 20px;
@@ -420,4 +420,23 @@ template {
 }
 .card__media {
 	margin-top: 0;
+}
+.watch_img {
+	width: 100%;
+}
+.video-responsive {
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	/* height: 700px; */
+	/* background-color: red; */
+	/* padding-bottom: 200px; */
+}
+
+.frame {
+	left: 0;
+	top: 0;
+	/* height: 50%; */
+	width: 100%;
+	/* position: absolute; */
 }
