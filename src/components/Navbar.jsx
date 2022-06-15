@@ -1,52 +1,78 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import Search from './Search';
 
-const Navbar = () => {
+const Navbar = ({ setDataSearch, dataSearch }) => {
+	const [show, setShow] = useState(false);
+	const handleShow = () => {
+		setShow(true);
+	};
+	const handleCLose = () => {
+		setShow(false);
+	};
 	return (
-		<nav className="header__menu">
-			<ul className="aa">
-				<li>
-					<NavLink
-						className={({ isActive }) => {
-							return isActive ? 'ac' : 'na';
-						}}
-						to="/"
-					>
-						Home
-					</NavLink>
-				</li>
-				<li>
-					<NavLink
-						className={({ isActive }) => {
-							return isActive ? 'ac' : 'na';
-						}}
-						to="/series"
-					>
-						Series
-					</NavLink>
-				</li>
-				<li>
-					<NavLink
-						className={({ isActive }) => {
-							return isActive ? 'ac' : 'na';
-						}}
-						to="/movies"
-					>
-						Peliculas
-					</NavLink>
-				</li>
-				<li>
-					<NavLink
-						className={({ isActive }) => {
-							return isActive ? 'ac' : 'na';
-						}}
-						to="/generos"
-					>
-						Generos
-					</NavLink>
-				</li>
-			</ul>
-		</nav>
+		<>
+			{!show && (
+				<img
+					className="header__menu-icon header__menu-icon-open"
+					src="../../assets/menu_hamburger_icon.png"
+					alt="menu_icon"
+					onClick={handleShow}
+				/>
+			)}
+			{show && (
+				<>
+					<nav className="header__menu">
+						<img
+							className="header__menu-icon header__menu-cross-icon"
+							src="../../assets/cross_icon.png"
+							alt=""
+							onClick={handleCLose}
+						/>
+						<Search
+							setDataSearch={setDataSearch}
+							setShow={setShow}
+							dataSearch={dataSearch}
+						/>
+						<ul className="aa">
+							<li>
+								<NavLink
+									className={({ isActive }) => {
+										return isActive ? 'ac' : 'na';
+									}}
+									to="/"
+									onClick={handleCLose}
+								>
+									Home
+								</NavLink>
+							</li>
+							<li>
+								<NavLink
+									className={({ isActive }) => {
+										return isActive ? 'ac' : 'na';
+									}}
+									to="/series"
+									onClick={handleCLose}
+								>
+									Series
+								</NavLink>
+							</li>
+							<li>
+								<NavLink
+									className={({ isActive }) => {
+										return isActive ? 'ac' : 'na';
+									}}
+									to="/movies"
+									onClick={handleCLose}
+								>
+									Peliculas
+								</NavLink>
+							</li>
+						</ul>
+					</nav>
+				</>
+			)}
+		</>
 	);
 };
 

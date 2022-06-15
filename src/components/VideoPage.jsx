@@ -45,9 +45,9 @@ const VideoPage = ({ imgBaseUrl }) => {
 		first_air_date,
 		original_title,
 	} = search;
+	console.log(id);
 	return (
 		<>
-			<p>oli</p>
 			<h1>{title || original_name}</h1>
 			<div>
 				{poster_path !== undefined ? (

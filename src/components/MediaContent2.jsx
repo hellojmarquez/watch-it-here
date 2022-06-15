@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const MediaContent = ({ data, img }) => {
+const MediaContent2 = ({ data, img }) => {
 	const {
 		id,
 		vote_average,
@@ -23,23 +23,23 @@ const MediaContent = ({ data, img }) => {
 	};
 	return (
 		<div
-			className="card"
+			className="card --media-card"
 			onClick={handleClick}
 			style={{ backgroundImage: `url("${img + poster}")` }}
 		>
 			<div className="card__info">
 				<h3 className="card__title">{name || title}</h3>
 				{first_air_date ? (
-					<p className="card__date">{`Fecha: ${first_air_date}`}</p>
+					<p className="card__date">{`score: ${first_air_date}`}</p>
 				) : (
-					<p className="card__date">{`Fecha: ${release_date}`}</p>
+					<p className="card__date">{`score: ${release_date}`}</p>
 				)}
 				<p className="card__score">
-					&#9733; score: <span>{vote_average}</span>
+					&#9733; Score: <span>{vote_average}</span>
 				</p>
 			</div>
 		</div>
 	);
 };
 
-export default MediaContent;
+export default MediaContent2;

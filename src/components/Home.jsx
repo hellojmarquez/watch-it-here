@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import HeroBanner from './HeroBanner';
 import MediaContent from './MediaContent';
 
-const Home = ({ movie, serie, data, img, setMediat, setId }) => {
+const Home = ({ movie, serie, data, img }) => {
 	const myRef = useRef();
 	let isDown = false;
 	let startX;
@@ -41,15 +41,7 @@ const Home = ({ movie, serie, data, img, setMediat, setId }) => {
 					className="card-container"
 				>
 					{movie.length > 0 ? (
-						movie.map(el => (
-							<MediaContent
-								key={el.id}
-								data={el}
-								img={img}
-								setMediat={setMediat}
-								setId={setId}
-							/>
-						))
+						movie.map(el => <MediaContent key={el.id} data={el} img={img} />)
 					) : (
 						<p className="container__nodata">Sin datos</p>
 					)}
@@ -65,15 +57,7 @@ const Home = ({ movie, serie, data, img, setMediat, setId }) => {
 					className="card-container"
 				>
 					{movie.length > 0 ? (
-						serie.map(el => (
-							<MediaContent
-								key={el.id}
-								data={el}
-								img={img}
-								setMediat={setMediat}
-								setId={setId}
-							/>
-						))
+						serie.map(el => <MediaContent key={el.id} data={el} img={img} />)
 					) : (
 						<p className="container__nodata">Sin datos</p>
 					)}

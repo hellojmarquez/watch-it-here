@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import helperFetch from '../helper/helperFetch';
 import HeroBanner from './HeroBanner';
-import MediaContent from './MediaContent';
+import MediaContent2 from './MediaContent2';
 
 const Movies = ({ movie, img }) => {
 	const [more, setMore] = useState([]);
@@ -20,6 +20,7 @@ const Movies = ({ movie, img }) => {
 			setMore([]);
 		}
 	};
+
 	if (movie.length > 0) {
 		return (
 			<div>
@@ -27,13 +28,13 @@ const Movies = ({ movie, img }) => {
 				<h1>Peliculas populares</h1>
 				<section className="container">
 					{movie.map(el => (
-						<MediaContent key={el.id} data={el} img={img} />
+						<MediaContent2 key={el.id} data={el} img={img} />
 					))}
 				</section>
 				<button onClick={handleWatchMore}>Ver más +</button>
 				<section className="container">
 					{more.length > 0 ? (
-						more.map(el => <MediaContent key={el.id} data={el} img={img} />)
+						more.map(el => <MediaContent2 key={el.id} data={el} img={img} />)
 					) : (
 						<p className="container_nodata">sin datos</p>
 					)}

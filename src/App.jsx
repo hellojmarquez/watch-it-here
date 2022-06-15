@@ -6,11 +6,12 @@ import Home from './components/Home';
 import { Routes, Route } from 'react-router-dom';
 import Movies from './components/Movies';
 import helperFetch from './helper/helperFetch';
-import Genders from './components/Genders';
-import Search from './components/Search';
 import VideoPage from './components/VideoPage';
+import SearchField from './components/SearchField';
+import WatchTv from './components/WatchTv';
 function App() {
 	const [data, setData] = useState({});
+	const [dataSearch, setDataSearch] = useState([]);
 	const urlTrending =
 		'https://api.themoviedb.org/3/trending/all/day?api_key=a5990ca05331451c8aa33c049c6d2ca3';
 	const imgBaseUrl = 'http://image.tmdb.org/t/p/original';
@@ -18,6 +19,12 @@ function App() {
 	useEffect(() => {
 		fetchData.GET(urlTrending).then(res => setData(res.jsonResponse.results));
 		return;
+		// fetchData
+		// 	.GET(
+		// 		'https://api.themoviedb.org/3/tv/episode_group/2?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US'
+		// 	)
+		// 	.then(r => r)
+		// 	.then(res => console.log(res.jsonResponse));
 	}, []);
 	let movie = [];
 	let serie = [];
@@ -33,8 +40,11 @@ function App() {
 	return (
 		<div className="App">
 			<header className="header">
-				<Search />
-				<Navbar />
+				<Navbar
+					datasearch={dataSearch}
+					setDataSearch={setDataSearch}
+					dataSearch={dataSearch}
+				/>
 			</header>
 			<Routes>
 				<Route
@@ -51,8 +61,18 @@ function App() {
 					path="/movies"
 					element={<Movies movie={movie} img={imgBaseUrl} />}
 				/>
-				<Route path="/generos/*" element={<Genders />} />
 				<Route path="/vid" element={<VideoPage imgBaseUrl={imgBaseUrl} />} />
+				<Route path="/watch-tv" element={<WatchTv imgBaseUrl={imgBaseUrl} />} />
+				<Route
+					path="/search"
+					element={
+						<SearchField
+							dataSearch={dataSearch}
+							img={imgBaseUrl}
+							setDataSearch={setDataSearch}
+						/>
+					}
+				/>
 			</Routes>
 		</div>
 	);

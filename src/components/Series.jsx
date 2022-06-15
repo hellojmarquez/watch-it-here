@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import helperFetch from '../helper/helperFetch';
 import HeroBanner from './HeroBanner';
-import MediaContent from './MediaContent';
+import MediaContent3 from './MediaContent3';
 
 const Series = ({ serie, img }) => {
 	const [more, setMore] = useState([]);
@@ -25,15 +25,16 @@ const Series = ({ serie, img }) => {
 			<>
 				<HeroBanner data={serie} img={img} />
 				<h1>Series populares</h1>
+
 				<section className="container">
 					{serie.map(el => (
-						<MediaContent key={el.id} data={el} img={img} />
+						<MediaContent3 key={el.id} data={el} img={img} />
 					))}
 				</section>
 				<section className="container">
 					<button onClick={handleWatchMore}>Ver más +</button>
 					{more.length > 0 ? (
-						more.map(el => <MediaContent key={el.id} data={el} img={img} />)
+						more.map(el => <MediaContent3 key={el.id} data={el} img={img} />)
 					) : (
 						<p className="container__nodata">sin datos</p>
 					)}
