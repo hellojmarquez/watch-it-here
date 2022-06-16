@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import helperFetch from '../helper/helperFetch';
 import Episodes from './Episodes';
 
-const Seasons = ({ data, id, itemid, showac, setShowac }) => {
+const Seasons = ({ data, id, onToggle, active }) => {
 	const [ep, setEp] = useState([]);
 	const { name, season_number } = data;
 	const fetchData = helperFetch();
@@ -14,26 +14,27 @@ const Seasons = ({ data, id, itemid, showac, setShowac }) => {
 			.then(res => setEp(res.jsonResponse));
 	}, []);
 	const { episodes } = ep;
-	const handleCLick = () => {
-		setShowac(id);
-	};
+	// console.log('watch-tv: season: ', data);
+
 	return (
 		<>
 			<div className="acordeon">
-				<div className="acordeon-heading">
-					<div className="acordeon-container">
-						<h2>{name}</h2>
-						<span onClick={handleCLick}>x</span>
+				<div onClick={onToggle} className="acordeon__heading">
+					<div className="acordeon__container">
+						<h2 className="acordeon__title">{`Temporada: ${season_number}`}</h2>
+						<span>x</span>
 					</div>
 				</div>
 			</div>
-			<div className={(showac === id ? 'showac' : '') + ' acordeon-content'}>
-				<div className="acordeon-container">
-					{episodes !== undefined ? (
-						episodes.map(el => <Episodes key={el.id} el={el} />)
-					) : (
-						<p>no data</p>
-					)}
+			<div className={(active ? 'showac' : '') + ' acordeon__content'}>
+				<div className="acordeon__container-content">
+					<ul>
+						{episodes !== undefined ? (
+							episodes.map(el => <Episodes key={el.id} id={id} el={el} />)
+						) : (
+							<p>no data</p>
+						)}
+					</ul>
 				</div>
 			</div>
 		</>

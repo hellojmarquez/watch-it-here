@@ -65,13 +65,7 @@ function App() {
 				<Route path="/watch-tv" element={<WatchTv imgBaseUrl={imgBaseUrl} />} />
 				<Route
 					path="/search"
-					element={
-						<SearchField
-							dataSearch={dataSearch}
-							img={imgBaseUrl}
-							setDataSearch={setDataSearch}
-						/>
-					}
+					element={<SearchField dataSearch={dataSearch} img={imgBaseUrl} />}
 				/>
 			</Routes>
 		</div>

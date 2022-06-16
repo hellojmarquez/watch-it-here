@@ -4,7 +4,6 @@ import Seasons from './Seasons';
 
 const WatchTv = ({ imgBaseUrl }) => {
 	const data = JSON.parse(localStorage.getItem('search'));
-	const [ep, setEp] = useState([]);
 	const { id } = data;
 	const [search, setSearch] = useState('');
 	const [showTrailer, setShowTrailer] = useState(false);
@@ -12,7 +11,6 @@ const WatchTv = ({ imgBaseUrl }) => {
 	const fetchData = helperFetch();
 	const serieUrl = `https://api.themoviedb.org/3/tv/${id}?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
 	const tvVideoUrl = `https://api.themoviedb.org/3/tv/${id}/videos?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
-	const [showac, setShowac] = useState('');
 
 	useEffect(() => {
 		fetchData
@@ -36,21 +34,20 @@ const WatchTv = ({ imgBaseUrl }) => {
 		first_air_date,
 		original_title,
 	} = search;
-	// const enpoint = `https://api.themoviedb.org/3/tv/${id}/season/${seasons.season_number}?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
-	// console.log(seasons[0].season_number);
-	// useEffect(() => {
-	// 	fetchData
-	// 		.GET(enpoint)
-	// 		.then(r => r)
-	// 		.then(res => setEp(res.jsonResponse));
-	// }, []);
+
+	const [clicked, setClicked] = useState('0');
+	const handleToggle = index => {
+		if (clicked === index) {
+			return setClicked('0');
+		}
+		setClicked(index);
+	};
+	// console.log('search: ', );
 
 	const handleTrailer = () => {
 		showTrailer ? setShowTrailer(false) : setShowTrailer(true);
 	};
-	// console.log('media: ', mediaVideo);
-	// id 66732
-	// console.log(search);
+
 	return (
 		<section className="container">
 			<article>
@@ -98,16 +95,15 @@ const WatchTv = ({ imgBaseUrl }) => {
 				</div>
 			</article>
 			<p>Temporadas</p>
-			<article>
+			<article className="acordeonWrapper">
 				{seasons !== undefined &&
-					seasons.map(el => (
+					seasons.map((el, index) => (
 						<Seasons
-							key={el.id}
+							key={index}
 							data={el}
 							id={id}
-							itemId={el.id}
-							showac={showac}
-							setShowac={setShowac}
+							onToggle={() => handleToggle(index)}
+							active={clicked === index}
 						/>
 					))}
 			</article>
