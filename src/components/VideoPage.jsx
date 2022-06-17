@@ -7,42 +7,42 @@ const VideoPage = ({ imgBaseUrl }) => {
 	const [search, setSearch] = useState('');
 	const [mediaVideo, setMediaVideo] = useState('');
 	const fetchData = helperFetch();
-	const movieUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
-	const serieUrl = `https://api.themoviedb.org/3/tv/${id}?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
-	const tvVideoUrl = `https://api.themoviedb.org/3/tv/${id}/videos?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
-	const movieVideoUrl = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
-	const episodeUrl = `https://api.themoviedb.org/3/tv/${id}/season/${season}/episode/${episode}?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
-	const episodeVideoUrl = `https://api.themoviedb.org/3/tv/${id}/season/${season}/episode/${episode}/videos?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
+	const endp_movie_url = `https://api.themoviedb.org/3/movie/${id}?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
+	const endp_tv_url = `https://api.themoviedb.org/3/tv/${id}?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
+	const endp_tv_video = `https://api.themoviedb.org/3/tv/${id}/videos?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
+	const endp_movie_video = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
+	const endp_episode = `https://api.themoviedb.org/3/tv/${id}/season/${season}/episode/${episode}?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
+	const endp_episode_video = `https://api.themoviedb.org/3/tv/${id}/season/${season}/episode/${episode}/videos?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
 
 	useEffect(() => {
 		if (!season) {
 			if (media === 'movie') {
 				fetchData
-					.GET(movieUrl)
+					.GET(endp_movie_url)
 					.then(r => r)
 					.then(res => setSearch(res.jsonResponse));
 
 				fetchData
-					.GET(movieVideoUrl)
+					.GET(endp_movie_video)
 					.then(r => r)
 					.then(res => setMediaVideo(res.jsonResponse.results));
 			} else {
 				fetchData
-					.GET(serieUrl)
+					.GET(endp_tv_url)
 					.then(r => r)
 					.then(res => setSearch(res.jsonResponse));
 				fetchData
-					.GET(tvVideoUrl)
+					.GET(endp_tv_video)
 					.then(r => r)
 					.then(res => setMediaVideo(res.jsonResponse.results));
 			}
 		} else {
 			fetchData
-				.GET(episodeUrl)
+				.GET(endp_episode)
 				.then(r => r)
 				.then(res => setSearch(res.jsonResponse));
 			fetchData
-				.GET(episodeVideoUrl)
+				.GET(endp_episode_video)
 				.then(r => r)
 				.then(res => setMediaVideo(res.jsonResponse.results));
 		}

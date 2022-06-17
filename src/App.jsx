@@ -19,12 +19,6 @@ function App() {
 	useEffect(() => {
 		fetchData.GET(urlTrending).then(res => setData(res.jsonResponse.results));
 		return;
-		// fetchData
-		// 	.GET(
-		// 		'https://api.themoviedb.org/3/tv/episode_group/2?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US'
-		// 	)
-		// 	.then(r => r)
-		// 	.then(res => console.log(res.jsonResponse));
 	}, []);
 	let movie = [];
 	let serie = [];

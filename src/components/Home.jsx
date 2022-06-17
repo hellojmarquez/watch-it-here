@@ -28,7 +28,7 @@ const Home = ({ movie, serie, data, img }) => {
 
 	return (
 		<>
-			<HeroBanner data={data} img={img} />
+			<HeroBanner data={serie} img={img} />
 			<section className="container">
 				<h2 className="container__title">Peliculas populares</h2>
 

@@ -356,11 +356,11 @@ body,
 html {
 	scroll-behavior: smooth;
 }
-/* <style> */
-/* @import url('https://fonts.googleapis.com/css2?family=Six+Caps&display=swap'); */
-/* @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap'); */
-
-/* @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap'); */
+:root {
+	--slide-transform: 0;
+	--transition: transform 1s;
+	--color: red;
+}
 .App {
 	display: flex;
 	flex-direction: column;
@@ -372,7 +372,6 @@ html {
 .header {
 	display: flex;
 	flex-direction: row-reverse;
-	/* position: relative; */
 }
 .header__menu {
 	position: fixed;
@@ -388,7 +387,6 @@ html {
 	backdrop-filter: blur(13px);
 	z-index: 2000;
 	overflow: hidden;
-	/* touch-action: none; */
 }
 .header__menu-icon {
 	width: 20px;
@@ -436,9 +434,6 @@ html {
 	background: rgba(255, 255, 255, 0.8);
 	outline: none;
 	border: none;
-	/* border: 1px solid rgba(255, 255, 255, 0.683);
-	border-right: 1px solid rgba(255, 255, 255, 0.2);
-	border-bottom: 1px solid rgba(255, 255, 255, 0.2); */
 	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 	font-size: 12px;
 	padding: 5px 20px;
@@ -467,11 +462,40 @@ html {
 	color: white;
 }
 .hero-banner {
-	width: 100%;
+	display: flex;
+	width: 300px;
+	margin: 0 auto;
+	height: 400px;
+	overflow: hidden;
+	position: relative;
 }
-.hero-banner__img {
-	width: 100%;
+.slider {
+	width: 400px;
+	height: 400px;
+	display: flex;
+	transform: translateX(var(--slide-transform));
+	transition: var(--transition);
 }
+.slider__element {
+	min-width: 100%;
+}
+.slider__btn {
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	margin-top: 50%;
+	font-size: 10px;
+	text-align: center;
+	background-color: rgba(255, 255, 255, 0.5);
+}
+.--prev {
+	right: 10px;
+}
+.--next {
+	left: 10px;
+}
+
 .container {
 	display: flex;
 	flex-direction: column;
@@ -572,15 +596,11 @@ html {
 	width: 300px;
 	gap: 10px;
 	box-sizing: border-box;
-	/* background-color: red; */
 }
 .acordeon {
 	width: 100vw;
 	margin-top: 5px;
 	margin-bottom: 5px;
-	/* max-width: 320px; */
-	/* margin: 18px auto; */
-	/* margin-bottom: 10px; */
 }
 .acordeon__heading {
 	background-color: rgb(4, 26, 92);
@@ -604,7 +624,6 @@ html {
 .acordeon__content {
 	margin: 0;
 	background-color: bisque;
-	/* width: 100%; */
 	height: 0;
 	opacity: 0;
 	display: none;
