@@ -8,8 +8,8 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"framer-motion": "^6.3.11",
 		"react": "^18.0.0",
+		"react-alice-carousel": "^2.6.1",
 		"react-dom": "^18.0.0",
 		"react-router-dom": "^6.3.0"
 	},

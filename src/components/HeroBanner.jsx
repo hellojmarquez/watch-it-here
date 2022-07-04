@@ -1,9 +1,11 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const HeroBanner = ({ img, data }) => {
 	const slicedData = data.slice(0, 6);
 	const sliderRef = useRef(null);
 	const intervalSlider = useRef(null);
+	const navigate = useNavigate();
 	const handleNext = () => {
 		if (sliderRef.current.children.length > 0) {
 			const firstElement = sliderRef.current.children[0];
@@ -41,78 +43,21 @@ const HeroBanner = ({ img, data }) => {
 		console.log('saliendo');
 		intervalSlider.current = setInterval(() => {
 			handleNext();
-		}, 5000);
+		}, 6000);
 	};
 	useEffect(() => {
 		intervalSlider.current = setInterval(() => {
 			handleNext();
 		}, 5000);
-		// sliderRef.current.addEventListener('mouseenter', () => {});
-		// sliderRef.current.addEventListener('mouseleave', () => {});
 	}, []);
-
-	// let isInTransition = false;
-	// let sliderAll = [];
-	// if (slicedData.length > 0) {
-	// 	sliderAll = Array.from(document.querySelectorAll('.slider__element'));
-	// }
-	// console.log(sliderAll);
-	// let rootStyles = document.documentElement.style;
-	// let slideCounter = 0;
-	// const DIRECTION = {
-	// 	RIGTH: 'RIGTH',
-	// 	LEFT: 'LEFT',
-	// };
-
-	// const getTransformValue = () =>
-	// 	Number(rootStyles.getPropertyValue('--slide-transform').replace('px', ''));
-	// const reOrderSlide = () => {
-	// 	rootStyles.setProperty('--transition', 'none');
-	// 	const transformValue = getTransformValue();
-	// 	if (sliderAll.length > 0) {
-	// 		if (slideCounter === sliderAll.length - 1) {
-	// 			sliderRef.current.appendChild(sliderAll[0]);
-	// 			rootStyles.setProperty(
-	// 				'--slide-transform',
-	// 				`${transformValue + sliderAll[slideCounter].scrollWidth}px`
-	// 			);
-	// 			slideCounter--;
-	// 		} else if (slideCounter === 0) {
-	// 			sliderRef.current.prepend(sliderAll[6]);
-	// 			rootStyles.setProperty(
-	// 				'--slide-transform',
-	// 				`${transformValue + sliderAll[slideCounter].scrollWidth}px`
-	// 			);
-	// 			slideCounter++;
-	// 		}
-	// 	}
-	// 	isInTransition = false;
-	// };
-	// useEffect(() => {
-	// 	reOrderSlide();
-	// }, []);
-
-	// const moveSlide = direction => {
-	// 	if (sliderAll.length > 0) {
-	// 		if (isInTransition) return;
-	// 		rootStyles.setProperty('--transition', 'transform 1s');
-	// 		isInTransition = true;
-	// 		const transformValue = getTransformValue();
-	// 		if (direction === DIRECTION.LEFT) {
-	// 			rootStyles.setProperty(
-	// 				'--slide-transform',
-	// 				`${transformValue + sliderAll[slideCounter].scrollWidth}px`
-	// 			);
-	// 			slideCounter--;
-	// 		} else if (direction === DIRECTION.RIGTH) {
-	// 			rootStyles.setProperty(
-	// 				'--slide-transform',
-	// 				`${transformValue - sliderAll[slideCounter].scrollWidth}px`
-	// 			);
-	// 			slideCounter++;
-	// 		}
-	// 	}
-	// };
+	const handleClick = ({ id, media }) => {
+		const search = {
+			id: id,
+			media: media,
+		};
+		window.localStorage.setItem('search', JSON.stringify(search));
+		navigate('/vid');
+	};
 
 	return (
 		<>
@@ -124,13 +69,20 @@ const HeroBanner = ({ img, data }) => {
 					onMouseLeave={reanudeInterval}
 				>
 					{slicedData.map(el => (
-						<img
-							src={img + el.poster_path}
+						<div
 							key={el.id}
 							className="slider__element"
-						></img>
+							style={{ backgroundImage: `url(${img}${el.poster_path})` }}
+						>
+							<a onClick={() => handleClick(el)} className="herobtn">
+								ver ahora
+							</a>
+						</div>
+
+						// src={img + }
 					))}
 				</div>
+
 				<button className="slider__btn --prev" onClick={handlePrev}>
 					Next
 				</button>

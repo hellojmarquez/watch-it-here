@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import MediaContent2 from './MediaContent2';
+// import MediaContent2 from './MediaContent2';
+import MediaContent3 from './MediaContent3';
 
 const SearchField = ({ dataSearch, img }) => {
 	const [data, setData] = useState([]);
@@ -25,7 +26,7 @@ const SearchField = ({ dataSearch, img }) => {
 							</b>
 						</p>
 						{data.map(el => (
-							<MediaContent2 key={el.id} data={el} img={img} />
+							<MediaContent3 key={el.id} data={el} img={img} />
 						))}
 					</>
 				)}

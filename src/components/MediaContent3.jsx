@@ -19,7 +19,7 @@ const MediaContent3 = ({ data, img }) => {
 			media: media,
 		};
 		window.localStorage.setItem('search', JSON.stringify(search));
-		navigate('/watch-tv');
+		navigate('/vid');
 	};
 	return (
 		<div

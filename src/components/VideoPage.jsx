@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import helperFetch from '../helper/helperFetch';
+import Seasons from './Seasons';
 
 const VideoPage = ({ imgBaseUrl }) => {
 	const data = JSON.parse(localStorage.getItem('search'));
@@ -48,6 +49,7 @@ const VideoPage = ({ imgBaseUrl }) => {
 		}
 	}, []);
 	const {
+		seasons,
 		name,
 		still_path,
 		vote_average,
@@ -60,7 +62,19 @@ const VideoPage = ({ imgBaseUrl }) => {
 		original_title,
 		air_date,
 	} = search;
+	console.log(search);
+	const [clicked, setClicked] = useState('0');
+	const handleToggle = index => {
+		if (clicked === index) {
+			return setClicked('0');
+		}
+		setClicked(index);
+	};
+	// console.log('search: ', );
 
+	const handleTrailer = () => {
+		showTrailer ? setShowTrailer(false) : setShowTrailer(true);
+	};
 	return (
 		<>
 			{season ? (
@@ -109,6 +123,23 @@ const VideoPage = ({ imgBaseUrl }) => {
 					/>
 				)}
 			</div>
+			{seasons && (
+				<>
+					<p>Temporadas</p>
+					<article className="acordeonWrapper">
+						{seasons !== undefined &&
+							seasons.map((el, index) => (
+								<Seasons
+									key={index}
+									data={el}
+									id={id}
+									onToggle={() => handleToggle(index)}
+									active={clicked === index}
+								/>
+							))}
+					</article>
+				</>
+			)}
 		</>
 	);
 };

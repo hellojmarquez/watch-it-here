@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import helperFetch from '../helper/helperFetch';
 import MediaContent2 from './MediaContent2';
+import MediaContent3 from './MediaContent3';
 
 const UpComing = ({ img }) => {
 	const [movie, setMovie] = useState([]);
@@ -19,7 +20,7 @@ const UpComing = ({ img }) => {
 				<h1>Proximamente</h1>
 				<section className="container">
 					{movie.map(el => (
-						<MediaContent2 key={el.id} data={el} img={img} />
+						<MediaContent3 key={el.id} data={el} img={img} />
 					))}
 				</section>
 			</>

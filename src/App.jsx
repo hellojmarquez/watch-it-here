@@ -8,7 +8,7 @@ import Movies from './components/Movies';
 import helperFetch from './helper/helperFetch';
 import VideoPage from './components/VideoPage';
 import SearchField from './components/SearchField';
-import WatchTv from './components/WatchTv';
+// import WatchTv from './components/WatchTv';
 function App() {
 	const [data, setData] = useState({});
 	const [dataSearch, setDataSearch] = useState([]);
@@ -56,7 +56,7 @@ function App() {
 					element={<Movies movie={movie} img={imgBaseUrl} />}
 				/>
 				<Route path="/vid" element={<VideoPage imgBaseUrl={imgBaseUrl} />} />
-				<Route path="/watch-tv" element={<WatchTv imgBaseUrl={imgBaseUrl} />} />
+				{/* <Route path="/watch-tv" element={<WatchTv imgBaseUrl={imgBaseUrl} />} /> */}
 				<Route
 					path="/search"
 					element={<SearchField dataSearch={dataSearch} img={imgBaseUrl} />}
