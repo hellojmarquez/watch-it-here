@@ -74,9 +74,12 @@ const HeroBanner = ({ img, data }) => {
 							className="slider__element"
 							style={{ backgroundImage: `url(${img}${el.poster_path})` }}
 						>
-							<a onClick={() => handleClick(el)} className="herobtn">
-								ver ahora
-							</a>
+							<div className="hero-info">
+								<h2 className="hero-info__title">{el.title || el.name}</h2>
+								<a onClick={() => handleClick(el)} className="hero-info__btn">
+									ver ahora
+								</a>
+							</div>
 						</div>
 
 						// src={img + }

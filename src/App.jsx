@@ -40,28 +40,30 @@ function App() {
 					dataSearch={dataSearch}
 				/>
 			</header>
-			<Routes>
-				<Route
-					path="/*"
-					element={
-						<Home movie={movie} serie={serie} data={data} img={imgBaseUrl} />
-					}
-				/>
-				<Route
-					path="/series"
-					element={<Series serie={serie} img={imgBaseUrl} />}
-				/>
-				<Route
-					path="/movies"
-					element={<Movies movie={movie} img={imgBaseUrl} />}
-				/>
-				<Route path="/vid" element={<VideoPage imgBaseUrl={imgBaseUrl} />} />
-				{/* <Route path="/watch-tv" element={<WatchTv imgBaseUrl={imgBaseUrl} />} /> */}
-				<Route
-					path="/search"
-					element={<SearchField dataSearch={dataSearch} img={imgBaseUrl} />}
-				/>
-			</Routes>
+			<div className="wrapper">
+				<Routes>
+					<Route
+						path="/*"
+						element={
+							<Home movie={movie} serie={serie} data={data} img={imgBaseUrl} />
+						}
+					/>
+					<Route
+						path="/series"
+						element={<Series serie={serie} img={imgBaseUrl} />}
+					/>
+					<Route
+						path="/movies"
+						element={<Movies movie={movie} img={imgBaseUrl} />}
+					/>
+					<Route path="/vid" element={<VideoPage imgBaseUrl={imgBaseUrl} />} />
+					{/* <Route path="/watch-tv" element={<WatchTv imgBaseUrl={imgBaseUrl} />} /> */}
+					<Route
+						path="/search"
+						element={<SearchField dataSearch={dataSearch} img={imgBaseUrl} />}
+					/>
+				</Routes>
+			</div>
 		</div>
 	);
 }

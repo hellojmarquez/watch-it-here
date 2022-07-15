@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
 
 const Episodes = ({ el, id }) => {
 	const { name, episode_number: episode, season_number: season } = el;
@@ -12,6 +12,7 @@ const Episodes = ({ el, id }) => {
 			episode: episode,
 		};
 		window.localStorage.setItem('search', JSON.stringify(search));
+		Navigate('/vid');
 	};
 	return (
 		<li className="acordeon__items">

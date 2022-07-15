@@ -70,13 +70,12 @@ const VideoPage = ({ imgBaseUrl }) => {
 		}
 		setClicked(index);
 	};
-	// console.log('search: ', );
 
 	const handleTrailer = () => {
 		showTrailer ? setShowTrailer(false) : setShowTrailer(true);
 	};
 	return (
-		<>
+		<div className="container">
 			{season ? (
 				<h1>
 					{`Episodio ${episode}: `}
@@ -140,7 +139,7 @@ const VideoPage = ({ imgBaseUrl }) => {
 					</article>
 				</>
 			)}
-		</>
+		</div>
 	);
 };
 
