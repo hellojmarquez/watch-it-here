@@ -8,7 +8,6 @@ import Movies from './components/Movies';
 import helperFetch from './helper/helperFetch';
 import VideoPage from './components/VideoPage';
 import SearchField from './components/SearchField';
-// import WatchTv from './components/WatchTv';
 function App() {
 	const [data, setData] = useState({});
 	const [dataSearch, setDataSearch] = useState([]);
@@ -17,7 +16,7 @@ function App() {
 	const imgBaseUrl = 'http://image.tmdb.org/t/p/original';
 	let fetchData = helperFetch();
 	useEffect(() => {
-		fetchData.GET(urlTrending).then(res => setData(res.jsonResponse.results));
+		fetchData.GET(urlTrending).then(res => setData(res.results));
 		return;
 	}, []);
 	let movie = [];
@@ -40,30 +39,27 @@ function App() {
 					dataSearch={dataSearch}
 				/>
 			</header>
-			<div className="wrapper">
-				<Routes>
-					<Route
-						path="/*"
-						element={
-							<Home movie={movie} serie={serie} data={data} img={imgBaseUrl} />
-						}
-					/>
-					<Route
-						path="/series"
-						element={<Series serie={serie} img={imgBaseUrl} />}
-					/>
-					<Route
-						path="/movies"
-						element={<Movies movie={movie} img={imgBaseUrl} />}
-					/>
-					<Route path="/vid" element={<VideoPage imgBaseUrl={imgBaseUrl} />} />
-					{/* <Route path="/watch-tv" element={<WatchTv imgBaseUrl={imgBaseUrl} />} /> */}
-					<Route
-						path="/search"
-						element={<SearchField dataSearch={dataSearch} img={imgBaseUrl} />}
-					/>
-				</Routes>
-			</div>
+			<Routes>
+				<Route
+					path="/*"
+					element={
+						<Home movie={movie} serie={serie} data={data} img={imgBaseUrl} />
+					}
+				/>
+				<Route
+					path="/series"
+					element={<Series serie={serie} img={imgBaseUrl} />}
+				/>
+				<Route
+					path="/movies"
+					element={<Movies movie={movie} img={imgBaseUrl} />}
+				/>
+				<Route path="/vid" element={<VideoPage imgBaseUrl={imgBaseUrl} />} />
+				<Route
+					path="/search"
+					element={<SearchField dataSearch={dataSearch} img={imgBaseUrl} />}
+				/>
+			</Routes>
 		</div>
 	);
 }

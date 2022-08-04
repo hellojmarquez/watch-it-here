@@ -17,6 +17,7 @@ const Home = ({ movie, serie, img }) => {
 		setLeft(-scroll);
 		// setTimeout(() => {
 		// }, 500);
+		return;
 	}, [widthScreen]);
 
 	// const series_slider = serie.map(i => <MediaContent data={i} img={img} />);

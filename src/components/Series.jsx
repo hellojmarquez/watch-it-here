@@ -36,8 +36,8 @@ const Series = ({ serie, img }) => {
 		f.GET(URL)
 			.then(r => r)
 			.then(res => {
-				setTOTAL_PAGES(Number(res.jsonResponse.total_pages));
-				setMore(res.jsonResponse.results);
+				setTOTAL_PAGES(Number(res.total_pages));
+				setMore(res.results);
 			});
 	}, [page]);
 	if (serie.length > 0) {

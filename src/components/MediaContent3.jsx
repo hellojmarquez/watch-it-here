@@ -23,7 +23,7 @@ const MediaContent3 = ({ data, img }) => {
 	};
 	return (
 		<div
-			className="card --media-card"
+			className="card"
 			onClick={handleClick}
 			style={{ backgroundImage: `url("${img + poster}")` }}
 		>

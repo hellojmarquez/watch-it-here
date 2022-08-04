@@ -86,12 +86,8 @@ const HeroBanner = ({ img, data }) => {
 					))}
 				</div>
 
-				<button className="slider__btn --prev" onClick={handlePrev}>
-					Next
-				</button>
-				<button className="slider__btn --next" onClick={handleNext}>
-					Prev
-				</button>
+				<button className="slider__btn --prev" onClick={handleNext}></button>
+				<button className="slider__btn --next" onClick={handlePrev}></button>
 			</div>
 		</>
 	);

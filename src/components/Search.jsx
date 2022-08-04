@@ -23,7 +23,7 @@ const Search = ({ setShow, setDataSearch }) => {
 				`https://api.themoviedb.org/3/search/multi?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US&query=${query}&page=1&include_adult=true`
 			)
 				.then(r => r)
-				.then(res => setDataSearch(res.jsonResponse.results));
+				.then(res => setDataSearch(res.results));
 			setShow(false);
 			navigate('/search');
 		}

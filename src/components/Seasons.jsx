@@ -11,7 +11,7 @@ const Seasons = ({ data, id, onToggle, active }) => {
 		fetchData
 			.GET(enpoint)
 			.then(r => r)
-			.then(res => setEp(res.jsonResponse));
+			.then(res => setEp(res));
 	}, []);
 	const { episodes } = ep;
 	// console.log('watch-tv: season: ', data);

@@ -5,14 +5,13 @@ const Episodes = ({ el, id }) => {
 	const { name, episode_number: episode, season_number: season } = el;
 	const navigate = useNavigate();
 	const handleClick = () => {
-		console.log('hola, episodio: ', name);
 		const search = {
 			id: id,
 			season: season,
 			episode: episode,
 		};
 		window.localStorage.setItem('search', JSON.stringify(search));
-		navigate('/vid');
+		location.reload();
 	};
 	return (
 		<li className="acordeon__items">

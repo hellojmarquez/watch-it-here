@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// import MediaContent2 from './MediaContent2';
 import MediaContent3 from './MediaContent3';
 
 const SearchField = ({ dataSearch, img }) => {
@@ -17,20 +16,20 @@ const SearchField = ({ dataSearch, img }) => {
 
 	return (
 		<div>
-			<section className="container">
-				{data.length > 0 && (
-					<>
-						<p>
-							<b>
-								Se han encontrado <i>"{data.length}"</i> resultados
-							</b>
-						</p>
+			{data.length > 0 && (
+				<>
+					<p className="search__title">
+						<b>
+							Se han encontrado <i>"{data.length}"</i> resultados
+						</b>
+					</p>
+					<section className="container">
 						{data.map(el => (
 							<MediaContent3 key={el.id} data={el} img={img} />
 						))}
-					</>
-				)}
-			</section>
+					</section>
+				</>
+			)}
 		</div>
 	);
 };
