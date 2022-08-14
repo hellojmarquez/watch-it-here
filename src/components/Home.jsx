@@ -6,8 +6,6 @@ import { motion } from 'framer-motion';
 
 import HeroBanner from './HeroBanner';
 import MediaContent from './MediaContent';
-// import { useMediaScreen } from '../hooks/useMediaScreen';
-// import { useEffect, useRef, useState } from 'react';
 
 const Home = ({ movie, serie, img }) => {
 	const settings = {
