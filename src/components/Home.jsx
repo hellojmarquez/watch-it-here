@@ -2,12 +2,9 @@ import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { motion } from 'framer-motion';
 
 import HeroBanner from './HeroBanner';
 import MediaContent from './MediaContent';
-// import { useMediaScreen } from '../hooks/useMediaScreen';
-// import { useEffect, useRef, useState } from 'react';
 
 const Home = ({ movie, serie, img }) => {
 	const settings = {
