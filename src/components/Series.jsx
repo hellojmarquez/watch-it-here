@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import helperFetch from '../helper/helperFetch';
-import AliceCarousel from 'react-alice-carousel';
-import 'react-alice-carousel/lib/alice-carousel.css';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import HeroBanner from './HeroBanner';
 import MediaContent3 from './MediaContent3';
 import MediaContent from './MediaContent';
@@ -18,19 +19,46 @@ const Series = ({ serie, img }) => {
 	const URL = `https://api.themoviedb.org/3/discover/tv?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US&sort_by=popularity.desc&page=${page}&timezone=America%2FNew_York&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0`;
 	const f = helperFetch();
 
-	const mediaq = {
-		0: {
-			items: 1,
-		},
-		480: {
-			items: 2,
-		},
-		720: {
-			items: 3,
-		},
-		1024: {
-			items: 5,
-		},
+	const settings = {
+		dots: false,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 5,
+		slidesToScroll: 1,
+		adaptiveHeight: true,
+		responsive: [
+			{
+				breakpoint: 1024,
+				settings: {
+					slidesToShow: 3,
+					slidesToScroll: 3,
+					infinite: true,
+				},
+			},
+			{
+				breakpoint: 600,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 2,
+					initialSlide: 2,
+				},
+			},
+			{
+				breakpoint: 440,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 2,
+				},
+			},
+			{
+				breakpoint: 325,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					centerMode: true,
+				},
+			},
+		],
 	};
 	useEffect(() => {
 		f.GET(URL)
@@ -45,15 +73,8 @@ const Series = ({ serie, img }) => {
 			<>
 				<HeroBanner data={serie} img={img} />
 				<h1 className="container__title">Series populares</h1>
-				<AliceCarousel
-					items={series_slider}
-					responsive={mediaq}
-					animationDuration={200}
-					disableButtonsControls
-					disableDotsControls
-					mouseTracking
-					touchTracking
-				/>
+				<Slider {...settings}>{series_slider}</Slider>
+				<h2>Más series</h2>
 
 				<section className="container">
 					{more.length > 0 ? (

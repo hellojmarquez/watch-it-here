@@ -410,6 +410,8 @@ html {
 .header__menu-icon-open {
 	position: fixed;
 	z-index: 1000;
+	/* padding: 5px; */
+	background-color: var(--white-alpha);
 }
 .header__menu-cross-icon {
 	position: relative;
@@ -765,6 +767,10 @@ html {
 }
 .content_data {
 	width: 300px;
+}
+.mySwiper {
+	display: flex;
+	flex-direction: row;
 }
 @media screen and (min-width: 481px) {
 	.slider {

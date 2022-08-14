@@ -1,77 +1,71 @@
-import AliceCarousel from 'react-alice-carousel';
+import React from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import { motion } from 'framer-motion';
-import 'react-alice-carousel/lib/alice-carousel.css';
+
 import HeroBanner from './HeroBanner';
 import MediaContent from './MediaContent';
-import { useMediaScreen } from '../hooks/useMediaScreen';
-import { useEffect, useRef, useState } from 'react';
+// import { useMediaScreen } from '../hooks/useMediaScreen';
+// import { useEffect, useRef, useState } from 'react';
 
 const Home = ({ movie, serie, img }) => {
-	const sliderContainer = useRef(null);
-	const [left, setLeft] = useState();
-	const { widthScreen } = useMediaScreen();
+	const settings = {
+		dots: false,
+		infinite: true,
+		speed: 500,
+		slidesToShow: 5,
+		slidesToScroll: 1,
+		adaptiveHeight: true,
+		responsive: [
+			{
+				breakpoint: 1024,
+				settings: {
+					slidesToShow: 3,
+					slidesToScroll: 3,
+					infinite: true,
+				},
+			},
+			{
+				breakpoint: 600,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 2,
+					initialSlide: 2,
+				},
+			},
+			{
+				breakpoint: 440,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 2,
+				},
+			},
+			{
+				breakpoint: 325,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					centerMode: true,
+				},
+			},
+		],
+	};
 
-	useEffect(() => {
-		const scroll =
-			sliderContainer.current.scrollWidth - sliderContainer.current.offsetWidth;
-		setLeft(-scroll);
-		// setTimeout(() => {
-		// }, 500);
-		return;
-	}, [widthScreen]);
-
-	// const series_slider = serie.map(i => <MediaContent data={i} img={img} />);
-	// const movies_slider = movie.map(i => <MediaContent data={i} img={img} />);
-	// const mediaq = {
-	// 	0: {
-	// 		items: 1,
-	// 	},
-	// 	480: {
-	// 		items: 2,
-	// 	},
-	// 	720: {
-	// 		items: 3,
-	// 	},
-	// 	1024: {
-	// 		items: 6,
-	// 	},
-	// };
+	const series_slider = serie.map(i => (
+		<MediaContent key={i.id} data={i} img={img} />
+	));
+	const movies_slider = movie.map(i => (
+		<MediaContent key={i.id} data={i} img={img} />
+	));
 
 	return (
 		<>
 			<HeroBanner data={serie} img={img} />
-			<div className="sli">
-				<motion.div
-					className="sli__container"
-					drag="x"
-					dragConstraints={{ right: 0, left }}
-					ref={sliderContainer}
-				>
-					{movie.map(el => (
-						<MediaContent key={el.id} data={el} img={img} />
-					))}
-				</motion.div>
-			</div>
-			{/* <h2 className="container__title">Series populares</h2>
-			<AliceCarousel
-				items={movies_slider}
-				responsive={mediaq}
-				animationDuration={200}
-				mouseTracking
-				touchTracking
-				disableButtonsControls
-				disableDotsControls
-			/>
-			<h2 className="container__title">Peliculas populares</h2>
-			<AliceCarousel
-				items={series_slider}
-				responsive={mediaq}
-				animationDuration={200}
-				mouseTracking
-				touchTracking
-				disableButtonsControls
-				disableDotsControls
-			/> */}
+			<h2>Peliculas populares</h2>
+			<Slider {...settings}>{series_slider}</Slider>
+			<h2>series populares</h2>
+			<Slider {...settings}>{movies_slider}</Slider>
 		</>
 	);
 };

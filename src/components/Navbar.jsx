@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Search from './Search';
+import open from '../../assets/more.png';
+import close from '../../assets/close.png';
 
 const Navbar = ({ setDataSearch, dataSearch }) => {
 	const [show, setShow] = useState(false);
@@ -14,7 +16,7 @@ const Navbar = ({ setDataSearch, dataSearch }) => {
 		<>
 			<img
 				className="header__menu-icon header__menu-icon-open"
-				src="../../assets/menu_hamburger_icon.png"
+				src={open}
 				alt="menu_icon"
 				onClick={handleShow}
 			/>
@@ -22,8 +24,8 @@ const Navbar = ({ setDataSearch, dataSearch }) => {
 				<nav className={show ? 'header__menu no-display' : 'header__menu'}>
 					<img
 						className="header__menu-icon header__menu-cross-icon"
-						src="../../assets/cross_icon.png"
-						alt=""
+						src={close}
+						alt="close"
 						onClick={handleCLose}
 					/>
 					<Search
