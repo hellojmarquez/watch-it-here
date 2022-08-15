@@ -59,10 +59,12 @@ const Home = ({ movie, serie, img }) => {
 	return (
 		<>
 			<HeroBanner data={serie} img={img} />
-			<h2>Peliculas populares</h2>
-			<Slider {...settings}>{series_slider}</Slider>
-			<h2>series populares</h2>
-			<Slider {...settings}>{movies_slider}</Slider>
+			<div className="wrapper">
+				<h2>Peliculas populares</h2>
+				<Slider {...settings}>{series_slider}</Slider>
+				<h2>series populares</h2>
+				<Slider {...settings}>{movies_slider}</Slider>
+			</div>
 		</>
 	);
 };

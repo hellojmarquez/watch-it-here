@@ -74,16 +74,18 @@ const Movies = ({ movie, img }) => {
 		return (
 			<>
 				<HeroBanner data={movie} img={img} />
-				<h1>Peliculas populares</h1>
-				<Slider {...settings}>{movies_slider}</Slider>
-				<h2>Más peliculas</h2>
-				<section className="container">
-					{more.length > 0 ? (
-						more.map(el => <MediaContent3 key={el.id} data={el} img={img} />)
-					) : (
-						<p className="container__nodata">sin datos</p>
-					)}
-				</section>
+				<div className="wrapper">
+					<h1>Peliculas populares</h1>
+					<Slider {...settings}>{movies_slider}</Slider>
+					<h2>Más peliculas</h2>
+					<section className="container">
+						{more.length > 0 ? (
+							more.map(el => <MediaContent3 key={el.id} data={el} img={img} />)
+						) : (
+							<p className="container__nodata">sin datos</p>
+						)}
+					</section>
+				</div>
 				<Pagination page={page} setPage={setPage} TOTAL_PAGES={TOTAL_PAGES} />
 			</>
 		);

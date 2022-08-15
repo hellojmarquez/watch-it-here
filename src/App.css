@@ -543,6 +543,7 @@ html {
 	background-color: var(--white-alpha);
 	background-position: center;
 	background-repeat: no-repeat;
+	cursor: pointer;
 }
 .--prev {
 	left: 10px;
@@ -581,6 +582,7 @@ html {
 	border-bottom: 1px solid var(--grey-alpha);
 	box-shadow: 0 5px 15px var(--box-shadow);
 	background-size: contain;
+	cursor: pointer;
 }
 
 .card__info {
@@ -647,6 +649,7 @@ html {
 	padding: 10px;
 	margin: 0;
 	width: inherit;
+	cursor: pointer;
 }
 .acordeon__container {
 	max-width: 400px;
@@ -768,10 +771,7 @@ html {
 .content_data {
 	width: 300px;
 }
-.mySwiper {
-	display: flex;
-	flex-direction: row;
-}
+
 @media screen and (min-width: 481px) {
 	.slider {
 		height: 400px;
@@ -809,6 +809,9 @@ html {
 		font-size: 15px;
 		text-align: center;
 		background-position: 12px center;
+	}
+	.wrapper {
+		margin-left: 50px;
 	}
 	.acordeonWrapper {
 		width: 400px;
@@ -855,6 +858,9 @@ html {
 	}
 	.slider {
 		height: 600px;
+	}
+	.slider__btn {
+		margin-top: 30%;
 	}
 	.hero-banner {
 		height: 600px;

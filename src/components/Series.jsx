@@ -72,17 +72,19 @@ const Series = ({ serie, img }) => {
 		return (
 			<>
 				<HeroBanner data={serie} img={img} />
-				<h1 className="container__title">Series populares</h1>
-				<Slider {...settings}>{series_slider}</Slider>
-				<h2>Más series</h2>
+				<div className="wrapper">
+					<h1 className="container__title">Series populares</h1>
+					<Slider {...settings}>{series_slider}</Slider>
+					<h2>Más series</h2>
 
-				<section className="container">
-					{more.length > 0 ? (
-						more.map(el => <MediaContent3 key={el.id} data={el} img={img} />)
-					) : (
-						<p className="container__nodata">sin datos</p>
-					)}
-				</section>
+					<section className="container">
+						{more.length > 0 ? (
+							more.map(el => <MediaContent3 key={el.id} data={el} img={img} />)
+						) : (
+							<p className="container__nodata">sin datos</p>
+						)}
+					</section>
+				</div>
 				<Pagination page={page} setPage={setPage} TOTAL_PAGES={TOTAL_PAGES} />
 			</>
 		);
