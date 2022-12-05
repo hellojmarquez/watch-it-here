@@ -4,7 +4,6 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import HeroBanner from './HeroBanner';
-import MediaContent3 from './MediaContent3';
 import MediaContent from './MediaContent';
 import { useLocation } from 'react-router-dom';
 import Pagination from './Pagination';

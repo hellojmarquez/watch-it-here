@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import helperFetch from '../helper/helperFetch';
-import MediaContent3 from './MediaContent3';
+import MediaContent from './MediaContent';
 import Pagination from './Pagination';
 
 const SearchField = ({ img }) => {
@@ -36,7 +36,7 @@ const SearchField = ({ img }) => {
 					</p>
 					<section className="container">
 						{data.map(el => (
-							<MediaContent3 key={el.id} data={el} img={img} />
+							<MediaContent key={el.id} data={el} img={img} />
 						))}
 					</section>
 					<Pagination
