@@ -9,8 +9,7 @@ import helperFetch from './helper/helperFetch';
 import VideoPage from './components/VideoPage';
 import SearchField from './components/SearchField';
 function App() {
-	const [data, setData] = useState({});
-	const [dataSearch, setDataSearch] = useState([]);
+	const [data, setData] = useState([]);
 	const urlTrending =
 		'https://api.themoviedb.org/3/trending/all/day?api_key=a5990ca05331451c8aa33c049c6d2ca3';
 	const imgBaseUrl = 'http://image.tmdb.org/t/p/original';
@@ -33,11 +32,7 @@ function App() {
 	return (
 		<div className="App">
 			<header className="header">
-				<Navbar
-					datasearch={dataSearch}
-					setDataSearch={setDataSearch}
-					dataSearch={dataSearch}
-				/>
+				<Navbar />
 			</header>
 			<Routes>
 				<Route
@@ -55,10 +50,7 @@ function App() {
 					element={<Movies movie={movie} img={imgBaseUrl} />}
 				/>
 				<Route path="/vid" element={<VideoPage imgBaseUrl={imgBaseUrl} />} />
-				<Route
-					path="/search"
-					element={<SearchField dataSearch={dataSearch} img={imgBaseUrl} />}
-				/>
+				<Route path="/search" element={<SearchField img={imgBaseUrl} />} />
 			</Routes>
 		</div>
 	);

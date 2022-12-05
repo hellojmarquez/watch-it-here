@@ -11,10 +11,6 @@ const helperFetch = () => {
 					statusText: res.statusText || 'Ha ocurrido un error',
 				});
 			}
-			// Promise.reject({
-			// 	statusText: res.statusText || 'error',
-			// 	status: res.status,
-			// });
 		} catch (err) {
 			return err;
 		}

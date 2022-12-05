@@ -7,7 +7,7 @@ const VideoPage = ({ imgBaseUrl }) => {
 	const { id, media, season, episode } = data;
 	const [search, setSearch] = useState('');
 	const [mediaVideo, setMediaVideo] = useState('');
-	const fetchData = helperFetch();
+	const customFetch = helperFetch();
 	const endp_movie_url = `https://api.themoviedb.org/3/movie/${id}?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
 	const endp_tv_url = `https://api.themoviedb.org/3/tv/${id}?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
 	const endp_tv_video = `https://api.themoviedb.org/3/tv/${id}/videos?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
@@ -18,30 +18,30 @@ const VideoPage = ({ imgBaseUrl }) => {
 	useEffect(() => {
 		if (!season) {
 			if (media === 'movie') {
-				fetchData
+				customFetch
 					.GET(endp_movie_url)
 					.then(r => r)
 					.then(res => setSearch(res));
-				fetchData
+				customFetch
 					.GET(endp_movie_video)
 					.then(r => r)
 					.then(res => setMediaVideo(res.results));
 			} else {
-				fetchData
+				customFetch
 					.GET(endp_tv_url)
 					.then(r => r)
 					.then(res => setSearch(res));
-				fetchData
+				customFetch
 					.GET(endp_tv_video)
 					.then(r => r)
 					.then(res => setMediaVideo(res.results));
 			}
 		} else {
-			fetchData
+			customFetch
 				.GET(endp_episode)
 				.then(r => r)
 				.then(res => setSearch(res));
-			fetchData
+			customFetch
 				.GET(endp_episode_video)
 				.then(r => r)
 				.then(res => setMediaVideo(res.results));
@@ -69,7 +69,6 @@ const VideoPage = ({ imgBaseUrl }) => {
 		setClicked(index);
 	};
 
-	console.log(search);
 	return (
 		<>
 			{search.status < 400 || typeof search.status === 'string' ? (

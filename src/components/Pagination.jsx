@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Pagination = ({ page, setPage, TOTAL_PAGES }) => {
+const Pagination = ({ search_req, page, setPage, TOTAL_PAGES }) => {
 	const [buttonsArr, setButtonsArr] = useState([1, 2, 3, 4, 5]);
 	const navigate = useNavigate();
 	let START = buttonsArr[0];
@@ -9,7 +9,7 @@ const Pagination = ({ page, setPage, TOTAL_PAGES }) => {
 	const handleBackward = () => {
 		if (START === 1) return;
 		setButtonsArr(buttonsArr.map(el => el - 5));
-		navigate(`?page=${page}`);
+		navigate(`?results=${search_req}&page=${page}`);
 	};
 	const handleForward = () => {
 		if (END >= TOTAL_PAGES) return;
@@ -20,12 +20,12 @@ const Pagination = ({ page, setPage, TOTAL_PAGES }) => {
 		if (END >= TOTAL_PAGES) return;
 		if (page === END) {
 			setButtonsArr(buttonsArr.map(el => el + 5));
-			navigate(`?page=${page + 1}`);
+			navigate(`?results=${search_req}&page=${page + 1}`);
 			setPage(page + 1);
 		} else if (page < END) {
 			buttonsArr.forEach(el => {
 				if (page === el) {
-					navigate(`?page=${el + 1}`);
+					navigate(`?results=${search_req}&page=${el + 1}`);
 					setPage(page => page + 1);
 				}
 			});
@@ -49,7 +49,7 @@ const Pagination = ({ page, setPage, TOTAL_PAGES }) => {
 	const handleChangePage = e => {
 		const actual = Number(e.target.textContent);
 		setPage(actual);
-		navigate(`?page=${actual}`);
+		navigate(`?results=${search_req}&page=${actual}`);
 	};
 
 	useEffect(() => {
@@ -84,7 +84,10 @@ const Pagination = ({ page, setPage, TOTAL_PAGES }) => {
 				<div className="list">
 					{buttonsArr.map((el, index) => (
 						<li className={el > TOTAL_PAGES ? 'hidden' : ''} key={index}>
-							<a className={el == page ? 'ac' : ''} onClick={handleChangePage}>
+							<a
+								className={el == page ? 'active' : ''}
+								onClick={handleChangePage}
+							>
 								{el}
 							</a>
 						</li>

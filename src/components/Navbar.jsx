@@ -4,7 +4,7 @@ import Search from './Search';
 import open from '../../assets/more.png';
 import close from '../../assets/close.png';
 
-const Navbar = ({ setDataSearch, dataSearch }) => {
+const Navbar = () => {
 	const [show, setShow] = useState(false);
 	const handleShow = () => {
 		setShow(true);
@@ -28,16 +28,12 @@ const Navbar = ({ setDataSearch, dataSearch }) => {
 						alt="close"
 						onClick={handleCLose}
 					/>
-					<Search
-						setDataSearch={setDataSearch}
-						setShow={setShow}
-						dataSearch={dataSearch}
-					/>
+					<Search setShow={setShow} />
 					<ul className="aa">
 						<li>
 							<NavLink
 								className={({ isActive }) => {
-									return isActive ? 'ac' : 'na';
+									return isActive ? 'active' : 'no-active';
 								}}
 								to="/"
 								onClick={handleCLose}
@@ -48,7 +44,7 @@ const Navbar = ({ setDataSearch, dataSearch }) => {
 						<li>
 							<NavLink
 								className={({ isActive }) => {
-									return isActive ? 'ac' : 'na';
+									return isActive ? 'active' : 'no-active';
 								}}
 								to="/series"
 								onClick={handleCLose}
@@ -59,7 +55,7 @@ const Navbar = ({ setDataSearch, dataSearch }) => {
 						<li>
 							<NavLink
 								className={({ isActive }) => {
-									return isActive ? 'ac' : 'na';
+									return isActive ? 'active' : 'no-active';
 								}}
 								to="/movies"
 								onClick={handleCLose}
@@ -70,7 +66,6 @@ const Navbar = ({ setDataSearch, dataSearch }) => {
 					</ul>
 				</nav>
 			</>
-			{/* )} */}
 		</>
 	);
 };

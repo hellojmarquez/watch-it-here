@@ -4,17 +4,16 @@ import Episodes from './Episodes';
 
 const Seasons = ({ data, id, onToggle, active }) => {
 	const [ep, setEp] = useState([]);
-	const { name, season_number } = data;
-	const fetchData = helperFetch();
+	const { season_number } = data;
+	const customFetch = helperFetch();
 	const enpoint = `https://api.themoviedb.org/3/tv/${id}/season/${season_number}?api_key=a5990ca05331451c8aa33c049c6d2ca3&language=en-US`;
 	useEffect(() => {
-		fetchData
+		customFetch
 			.GET(enpoint)
 			.then(r => r)
 			.then(res => setEp(res));
 	}, []);
 	const { episodes } = ep;
-	// console.log('watch-tv: season: ', data);
 
 	return (
 		<>
